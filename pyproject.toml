@@ -1,0 +1,60 @@
+[project]
+name = "mcp-servers-workspace"
+version = "0.1.0"
+description = "Monorepo workspace for 16 free, uvx-installable MCP servers."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "mcp>=2.0,<3",
+    "httpx>=0.27.0",
+    "feedparser>=6.0.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "pyyaml>=6.0.0",
+    "youtube-transcript-api>=1.0.0",
+    "trafilatura>=2.0.0",
+    "markdownify>=1.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.8.0",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["servers"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-q"
+pythonpath = [
+    "servers/base64-encoding-mcp",
+    "servers/brevo-mcp",
+    "servers/case-converter-mcp",
+    "servers/color-converter-mcp",
+    "servers/data-converter-mcp",
+    "servers/datetime-utility-mcp",
+    "servers/hash-checksum-mcp",
+    "servers/password-generator-mcp",
+    "servers/regex-tester-mcp",
+    "servers/rss-feed-reader-mcp",
+    "servers/seo-analyzer-mcp",
+    "servers/text-diff-mcp",
+    "servers/unit-converter-mcp",
+    "servers/uuid-generator-mcp",
+    "servers/website-to-markdown-mcp/src",
+    "servers/youtube-transcript-mcp",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = [".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]

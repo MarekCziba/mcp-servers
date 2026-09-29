@@ -1,0 +1,25 @@
+[project]
+name = "hash-checksum-mcp"
+version = "0.1.0"
+description = "Generate and verify MD5, SHA, CRC32 and BLAKE2 hashes over MCP."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "model-context-protocol", "llm", "ai"]
+dependencies = [
+    "mcp>=2.0,<3"
+]
+
+[project.scripts]
+hash-checksum-mcp = "hash_checksum_mcp.main:main"
+
+[project.urls]
+Homepage = "https://github.com/MarekCziba/mcp-servers"
+Repository = "https://github.com/MarekCziba/mcp-servers/tree/main/servers/hash-checksum-mcp"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["hash_checksum_mcp"]

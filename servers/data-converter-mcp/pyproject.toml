@@ -1,0 +1,26 @@
+[project]
+name = "data-converter-mcp"
+version = "0.1.0"
+description = "Convert data between JSON, CSV, YAML, XML and Markdown tables over MCP."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "model-context-protocol", "llm", "ai"]
+dependencies = [
+    "mcp>=2.0,<3",
+    "pyyaml>=6.0.0"
+]
+
+[project.scripts]
+data-converter-mcp = "data_converter_mcp.main:main"
+
+[project.urls]
+Homepage = "https://github.com/MarekCziba/mcp-servers"
+Repository = "https://github.com/MarekCziba/mcp-servers/tree/main/servers/data-converter-mcp"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["data_converter_mcp"]

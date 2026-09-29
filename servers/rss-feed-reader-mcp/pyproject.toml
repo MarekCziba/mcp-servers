@@ -1,0 +1,27 @@
+[project]
+name = "rss-feed-reader-mcp"
+version = "0.1.0"
+description = "Fetch, parse and search RSS/Atom feeds over MCP."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "model-context-protocol", "llm", "ai"]
+dependencies = [
+    "mcp>=2.0,<3",
+    "httpx>=0.27.0",
+    "feedparser>=6.0.0"
+]
+
+[project.scripts]
+rss-feed-reader-mcp = "rss_feed_reader_mcp.main:main"
+
+[project.urls]
+Homepage = "https://github.com/MarekCziba/mcp-servers"
+Repository = "https://github.com/MarekCziba/mcp-servers/tree/main/servers/rss-feed-reader-mcp"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["rss_feed_reader_mcp"]

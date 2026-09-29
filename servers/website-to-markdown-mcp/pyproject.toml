@@ -1,0 +1,70 @@
+[project]
+name = "website-to-markdown-mcp"
+version = "0.1.0"
+description = "MCP server that turns any web page into clean, LLM-ready Markdown."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Marek Cziba", email = "marekcziba@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["mcp", "markdown", "scraping", "llm", "rag", "model-context-protocol"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "mcp>=2.0,<3",
+    "trafilatura>=2.0.0",
+    "markdownify>=1.0.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MarekCziba/website-to-markdown-mcp"
+Repository = "https://github.com/MarekCziba/website-to-markdown-mcp"
+Issues = "https://github.com/MarekCziba/website-to-markdown-mcp/issues"
+
+[project.scripts]
+website-to-markdown-mcp = "website_to_markdown_mcp.server:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/website_to_markdown_mcp"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.uv]
+default-groups = ["dev"]
