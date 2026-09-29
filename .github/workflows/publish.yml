@@ -1,0 +1,72 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no publish)"
+        type: boolean
+        default: true
+      packages:
+        description: "Comma-separated package dirs (empty = all)"
+        type: string
+        required: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    name: Publish ${{ matrix.pkg }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pkg:
+          - hash-checksum-mcp
+          - base64-encoding-mcp
+          - case-converter-mcp
+          - color-converter-mcp
+          - password-generator-mcp
+          - uuid-generator-mcp
+          - text-diff-mcp
+          - regex-tester-mcp
+          - datetime-utility-mcp
+          - unit-converter-mcp
+          - data-converter-mcp
+          - rss-feed-reader-mcp
+          - seo-analyzer-mcp
+          - youtube-transcript-mcp
+          - brevo-mcp
+          - crypto-prices-mcp
+          - github-repo-mcp
+          - wikipedia-mcp
+          - stack-overflow-mcp
+          - arxiv-mcp
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - name: Build package
+        working-directory: servers/${{ matrix.pkg }}
+        run: uv build
+      - name: Publish to PyPI
+        if: github.event_name == 'release' || inputs.dry_run == 'false'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: servers/${{ matrix.pkg }}/dist
+          skip-existing: true
+      - name: Dry-run summary
+        if: inputs.dry_run == 'true' && github.event_name == 'workflow_dispatch'
+        run: |
+          echo "::notice title=Dry run::${{ matrix.pkg }} built successfully. Enable 'dry_run: false' to publish."
+          ls -la servers/${{ matrix.pkg }}/dist/
