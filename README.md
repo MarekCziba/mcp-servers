@@ -117,3 +117,5 @@ MIT — see [LICENSE](LICENSE).
 ---
 
 Built by **Marek Cziba** · [GitHub](https://github.com/MarekCziba) · [LinkedIn](https://www.linkedin.com/in/marekcziba) · [marekcziba@gmail.com](mailto:marekcziba@gmail.com)
+
+**Articles:** [MCP vs Apify vs Custom Agents: When to Use Each](https://www.linkedin.com/pulse/mcp-vs-apify-custom-agents-when-use-each-marek-cziba-rltzf/) · [dev.to mirror](https://dev.to/marekcziba/mcp-vs-apify-vs-custom-agents-when-to-use-each-4pl0)
