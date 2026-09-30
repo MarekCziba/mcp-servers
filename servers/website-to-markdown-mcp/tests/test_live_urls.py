@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import os
+
 import pytest
 
 from website_to_markdown_mcp.server import (
@@ -9,6 +11,11 @@ from website_to_markdown_mcp.server import (
     fetch_page,
     fetch_pages,
     page_metadata,
+)
+
+pytestmark = pytest.mark.skipif(
+    os.environ.get("CI") == "true" and os.environ.get("RUN_LIVE_TESTS") != "1",
+    reason="network-dependent live tests; set RUN_LIVE_TESTS=1 to force",
 )
 
 EXAMPLE_URL = "https://example.com"

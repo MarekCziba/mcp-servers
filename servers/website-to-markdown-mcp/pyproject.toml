@@ -54,6 +54,7 @@ packages = ["src/website_to_markdown_mcp"]
 asyncio_mode = "auto"
 testpaths = ["tests"]
 addopts = "-q"
+pythonpath = ["src"]
 
 [tool.ruff]
 line-length = 100

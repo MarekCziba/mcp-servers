@@ -1,6 +1,7 @@
 import re
 import secrets
 import string
+import time
 import uuid
 
 from mcp.server.mcpserver import MCPServer
@@ -9,11 +10,23 @@ MCP_SERVER_NAME = "uuid-generator-mcp"
 mcp = MCPServer(MCP_SERVER_NAME)
 
 
+def _uuid7() -> uuid.UUID:
+    """RFC 9562 UUID version 7, with a fallback for Python < 3.14."""
+    if hasattr(uuid, "uuid7"):
+        return uuid.uuid7()
+    ts_ms = int(time.time() * 1000) & 0xFFFFFFFFFFFF
+    raw = bytearray(secrets.token_bytes(16))
+    raw[0:6] = ts_ms.to_bytes(6, "big")
+    raw[6] = 0x70 | (raw[6] & 0x0F)
+    raw[8] = 0x80 | (raw[8] & 0x3F)
+    return uuid.UUID(bytes=bytes(raw))
+
+
 @mcp.tool()
 async def generate_uuid(version: int = 4) -> str:
     """Generate a UUID. Version 4 (random) or 7 (time-ordered)."""
     if version == 7:
-        return str(uuid.uuid7())
+        return str(_uuid7())
     return str(uuid.uuid4())
 
 
