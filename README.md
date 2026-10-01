@@ -9,10 +9,10 @@
 
 Every server speaks the Model Context Protocol over stdio, runs locally next to your
 agent, and does one job well. Install any of them in a single command with
-[`uv`](https://docs.astral.sh/uv/):
+[`uv`](https://docs.astral.sh/uv/) — straight from this repository:
 
 ```bash
-uvx website-to-markdown-mcp
+uvx --from "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp" website-to-markdown-mcp
 ```
 
 ## Servers
@@ -49,7 +49,7 @@ uvx website-to-markdown-mcp
 2. Add a server to your MCP client:
 
 ```bash
-claude mcp add web-to-md -- uvx website-to-markdown-mcp
+claude mcp add web-to-md -- uvx --from "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp" website-to-markdown-mcp
 ```
 
 or in JSON config (Claude Desktop, Cursor, Windsurf, …):
@@ -59,7 +59,11 @@ or in JSON config (Claude Desktop, Cursor, Windsurf, …):
   "mcpServers": {
     "rss-feed-reader": {
       "command": "uvx",
-      "args": ["rss-feed-reader-mcp"]
+      "args": [
+        "--from",
+        "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp",
+        "rss-feed-reader-mcp"
+      ]
     }
   }
 }
@@ -72,7 +76,12 @@ opencode (`opencode.json`):
   "mcp": {
     "hash-checksum": {
       "type": "local",
-      "command": ["uvx", "hash-checksum-mcp"],
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp",
+        "hash-checksum-mcp"
+      ],
       "enabled": true
     }
   }
@@ -119,6 +128,6 @@ MIT — see [LICENSE](LICENSE).
 
 ---
 
-Built by **Marek Cziba** · [GitHub](https://github.com/MarekCziba) · [LinkedIn](https://www.linkedin.com/in/marekcziba) · [marekcziba@gmail.com](mailto:marekcziba@gmail.com)
+Built by **Marek Cziba** · [GitHub](https://github.com/MarekCziba) · [LinkedIn](https://www.linkedin.com/in/marek-cziba-669521372/) · [marekcziba@gmail.com](mailto:marekcziba@gmail.com)
 
 **Articles:** [MCP vs Apify vs Custom Agents: When to Use Each](https://www.linkedin.com/pulse/mcp-vs-apify-custom-agents-when-use-each-marek-cziba-rltzf/) · [dev.to mirror](https://dev.to/marekcziba/mcp-vs-apify-vs-custom-agents-when-to-use-each-4pl0)

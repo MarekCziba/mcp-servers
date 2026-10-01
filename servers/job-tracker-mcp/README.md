@@ -51,8 +51,7 @@ stays trustworthy.
 ## Quick start
 
 ```bash
-uvx --from git+https://github.com/MarekCziba/mcp-servers \
-  --directory servers/job-tracker-mcp job-tracker-mcp
+uvx --from "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/job-tracker-mcp" job-tracker-mcp
 ```
 
 Or run from a clone:
@@ -69,7 +68,12 @@ job-tracker-mcp
 {
   "mcpServers": {
     "job-tracker": {
-      "command": "job-tracker-mcp"
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/job-tracker-mcp",
+        "job-tracker-mcp"
+      ]
     }
   }
 }

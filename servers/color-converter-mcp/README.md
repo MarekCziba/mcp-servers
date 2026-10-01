@@ -1,7 +1,5 @@
 # 🎨 Color Converter MCP
 
-[![PyPI](https://img.shields.io/pypi/v/color-converter-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/color-converter-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/color-converter-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -27,14 +25,14 @@ orange, purple, pink, brown, navy, teal and maroon.
 ## 🚀 Install
 
 ```bash
-uvx color-converter-mcp          # recommended, no installation
-pip install color-converter-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/color-converter-mcp color-converter-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/color-converter-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add color-converter -- uvx color-converter-mcp
+claude mcp add color-converter -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/color-converter-mcp color-converter-mcp
 ```
 
 ```json
@@ -42,7 +40,7 @@ claude mcp add color-converter -- uvx color-converter-mcp
   "mcpServers": {
     "color-converter": {
       "command": "uvx",
-      "args": ["color-converter-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/color-converter-mcp", "color-converter-mcp"]
     }
   }
 }
@@ -55,7 +53,7 @@ opencode (`opencode.json`):
   "mcp": {
     "color-converter": {
       "type": "local",
-      "command": ["uvx", "color-converter-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/color-converter-mcp", "color-converter-mcp"],
       "enabled": true
     }
   }

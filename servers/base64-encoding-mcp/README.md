@@ -1,7 +1,5 @@
 # 📦 Base64 Encoding MCP
 
-[![PyPI](https://img.shields.io/pypi/v/base64-encoding-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/base64-encoding-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/base64-encoding-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -29,14 +27,14 @@ All eight tools are pure functions of their argument — no state, no network ac
 ## 🚀 Install
 
 ```bash
-uvx base64-encoding-mcp          # recommended, no installation
-pip install base64-encoding-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/base64-encoding-mcp base64-encoding-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/base64-encoding-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add base64-encoding -- uvx base64-encoding-mcp
+claude mcp add base64-encoding -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/base64-encoding-mcp base64-encoding-mcp
 ```
 
 ```json
@@ -44,7 +42,7 @@ claude mcp add base64-encoding -- uvx base64-encoding-mcp
   "mcpServers": {
     "base64-encoding": {
       "command": "uvx",
-      "args": ["base64-encoding-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/base64-encoding-mcp", "base64-encoding-mcp"]
     }
   }
 }
@@ -57,7 +55,7 @@ opencode (`opencode.json`):
   "mcp": {
     "base64-encoding": {
       "type": "local",
-      "command": ["uvx", "base64-encoding-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/base64-encoding-mcp", "base64-encoding-mcp"],
       "enabled": true
     }
   }

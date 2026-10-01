@@ -1,7 +1,5 @@
 # 🆔 UUID Generator MCP
 
-[![PyPI](https://img.shields.io/pypi/v/uuid-generator-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/uuid-generator-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/uuid-generator-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -26,14 +24,14 @@ collapses runs of spaces/hyphens into one `-`, strips leading/trailing `-` and t
 ## 🚀 Install
 
 ```bash
-uvx uuid-generator-mcp          # recommended, no installation
-pip install uuid-generator-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/uuid-generator-mcp uuid-generator-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/uuid-generator-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add uuid-generator -- uvx uuid-generator-mcp
+claude mcp add uuid-generator -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/uuid-generator-mcp uuid-generator-mcp
 ```
 
 ```json
@@ -41,7 +39,7 @@ claude mcp add uuid-generator -- uvx uuid-generator-mcp
   "mcpServers": {
     "uuid-generator": {
       "command": "uvx",
-      "args": ["uuid-generator-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/uuid-generator-mcp", "uuid-generator-mcp"]
     }
   }
 }
@@ -54,7 +52,7 @@ opencode (`opencode.json`):
   "mcp": {
     "uuid-generator": {
       "type": "local",
-      "command": ["uvx", "uuid-generator-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/uuid-generator-mcp", "uuid-generator-mcp"],
       "enabled": true
     }
   }

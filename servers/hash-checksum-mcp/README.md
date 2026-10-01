@@ -1,7 +1,5 @@
 # 🔐 Hash & Checksum MCP
 
-[![PyPI](https://img.shields.io/pypi/v/hash-checksum-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/hash-checksum-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/hash-checksum-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -22,14 +20,14 @@ Supported algorithms: `md5`, `sha1`, `sha256`, `sha512`, `crc32`, `blake2b`, `sh
 ## 🚀 Install
 
 ```bash
-uvx hash-checksum-mcp          # recommended, no installation
-pip install hash-checksum-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp hash-checksum-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add hash-checksum -- uvx hash-checksum-mcp
+claude mcp add hash-checksum -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp hash-checksum-mcp
 ```
 
 ```json
@@ -37,7 +35,7 @@ claude mcp add hash-checksum -- uvx hash-checksum-mcp
   "mcpServers": {
     "hash-checksum": {
       "command": "uvx",
-      "args": ["hash-checksum-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp", "hash-checksum-mcp"]
     }
   }
 }
@@ -50,7 +48,7 @@ opencode (`opencode.json`):
   "mcp": {
     "hash-checksum": {
       "type": "local",
-      "command": ["uvx", "hash-checksum-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/hash-checksum-mcp", "hash-checksum-mcp"],
       "enabled": true
     }
   }

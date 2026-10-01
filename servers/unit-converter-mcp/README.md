@@ -1,7 +1,5 @@
 # ⚖️ Unit Converter MCP
 
-[![PyPI](https://img.shields.io/pypi/v/unit-converter-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/unit-converter-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/unit-converter-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -27,14 +25,14 @@ Results are rounded: 10 decimals for `convert`, 4 for `convert_temperature`.
 ## 🚀 Install
 
 ```bash
-uvx unit-converter-mcp          # recommended, no installation
-pip install unit-converter-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/unit-converter-mcp unit-converter-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/unit-converter-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add unit-converter -- uvx unit-converter-mcp
+claude mcp add unit-converter -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/unit-converter-mcp unit-converter-mcp
 ```
 
 ```json
@@ -42,7 +40,7 @@ claude mcp add unit-converter -- uvx unit-converter-mcp
   "mcpServers": {
     "unit-converter": {
       "command": "uvx",
-      "args": ["unit-converter-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/unit-converter-mcp", "unit-converter-mcp"]
     }
   }
 }
@@ -55,7 +53,7 @@ opencode (`opencode.json`):
   "mcp": {
     "unit-converter": {
       "type": "local",
-      "command": ["uvx", "unit-converter-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/unit-converter-mcp", "unit-converter-mcp"],
       "enabled": true
     }
   }

@@ -1,7 +1,5 @@
 # 🌐 Website to Markdown MCP
 
-[![PyPI](https://img.shields.io/pypi/v/website-to-markdown-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/website-to-markdown-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/website-to-markdown-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/website-to-markdown-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/website-to-markdown-mcp/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -17,7 +15,7 @@ LLMs read text, not DOM trees. This server fetches a page, strips the navigation
 ads and boilerplate, and hands your agent semantic Markdown it can reason over
 immediately — a browser that speaks the model's language.
 
-- **One command, no config** — `uvx website-to-markdown-mcp` and it is running
+- **One command, no config** — `uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp website-to-markdown-mcp` and it is running
 - **Real extraction** — [trafilatura](https://trafilatura.readthedocs.io/) for article text, BeautifulSoup fallback for everything else
 - **Batch + concurrency** — up to 5 pages in flight at once, one bad URL never kills the batch
 - **Honest output** — guarantees an H1 heading, never leaks raw HTML tags
@@ -35,10 +33,10 @@ immediately — a browser that speaks the model's language.
 
 ```bash
 # one-off, no installation (recommended)
-uvx website-to-markdown-mcp
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp website-to-markdown-mcp
 
 # or with pip
-pip install website-to-markdown-mcp
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp"
 
 # or from source
 git clone https://github.com/MarekCziba/website-to-markdown-mcp
@@ -51,7 +49,7 @@ uv sync
 **Claude Desktop / Claude Code** — `claude mcp add`:
 
 ```bash
-claude mcp add website-to-markdown -- uvx website-to-markdown-mcp
+claude mcp add website-to-markdown -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp website-to-markdown-mcp
 ```
 
 **Cursor, Windsurf, or any JSON-config client:**
@@ -61,7 +59,7 @@ claude mcp add website-to-markdown -- uvx website-to-markdown-mcp
   "mcpServers": {
     "website-to-markdown": {
       "command": "uvx",
-      "args": ["website-to-markdown-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp", "website-to-markdown-mcp"]
     }
   }
 }
@@ -74,7 +72,7 @@ claude mcp add website-to-markdown -- uvx website-to-markdown-mcp
   "mcp": {
     "website-to-markdown": {
       "type": "local",
-      "command": ["uvx", "website-to-markdown-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/website-to-markdown-mcp", "website-to-markdown-mcp"],
       "enabled": true
     }
   }

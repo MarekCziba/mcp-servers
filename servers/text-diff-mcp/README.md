@@ -1,7 +1,5 @@
 # 🆚 Text Diff MCP
 
-[![PyPI](https://img.shields.io/pypi/v/text-diff-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/text-diff-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/text-diff-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -26,14 +24,14 @@ No API key, no account, no telemetry. Runs locally over stdio.
 ## 🚀 Install
 
 ```bash
-uvx text-diff-mcp          # recommended, no installation
-pip install text-diff-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/text-diff-mcp text-diff-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/text-diff-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add text-diff -- uvx text-diff-mcp
+claude mcp add text-diff -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/text-diff-mcp text-diff-mcp
 ```
 
 ```json
@@ -41,7 +39,7 @@ claude mcp add text-diff -- uvx text-diff-mcp
   "mcpServers": {
     "text-diff": {
       "command": "uvx",
-      "args": ["text-diff-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/text-diff-mcp", "text-diff-mcp"]
     }
   }
 }
@@ -54,7 +52,7 @@ opencode (`opencode.json`):
   "mcp": {
     "text-diff": {
       "type": "local",
-      "command": ["uvx", "text-diff-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/text-diff-mcp", "text-diff-mcp"],
       "enabled": true
     }
   }

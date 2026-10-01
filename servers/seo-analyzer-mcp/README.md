@@ -1,7 +1,5 @@
 # 🔍 SEO Analyzer MCP
 
-[![PyPI](https://img.shields.io/pypi/v/seo-analyzer-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/seo-analyzer-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/seo-analyzer-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -26,14 +24,14 @@ Analysis object: `url`, `status_code`, `title`, `title_length`, `title_ok` (30�
 ## 🚀 Install
 
 ```bash
-uvx seo-analyzer-mcp          # recommended, no installation
-pip install seo-analyzer-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/seo-analyzer-mcp seo-analyzer-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/seo-analyzer-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add seo-analyzer -- uvx seo-analyzer-mcp
+claude mcp add seo-analyzer -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/seo-analyzer-mcp seo-analyzer-mcp
 ```
 
 Cursor, Windsurf, or any JSON-config client:
@@ -43,7 +41,7 @@ Cursor, Windsurf, or any JSON-config client:
   "mcpServers": {
     "seo-analyzer": {
       "command": "uvx",
-      "args": ["seo-analyzer-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/seo-analyzer-mcp", "seo-analyzer-mcp"]
     }
   }
 }
@@ -56,7 +54,7 @@ opencode (`opencode.json`):
   "mcp": {
     "seo-analyzer": {
       "type": "local",
-      "command": ["uvx", "seo-analyzer-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/seo-analyzer-mcp", "seo-analyzer-mcp"],
       "enabled": true
     }
   }

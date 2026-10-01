@@ -1,7 +1,5 @@
 # 🔍 Regex Tester MCP
 
-[![PyPI](https://img.shields.io/pypi/v/regex-tester-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/regex-tester-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/regex-tester-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -25,14 +23,14 @@ No API key, no account, no telemetry. Runs locally over stdio.
 ## 🚀 Install
 
 ```bash
-uvx regex-tester-mcp          # recommended, no installation
-pip install regex-tester-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/regex-tester-mcp regex-tester-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/regex-tester-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add regex-tester -- uvx regex-tester-mcp
+claude mcp add regex-tester -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/regex-tester-mcp regex-tester-mcp
 ```
 
 ```json
@@ -40,7 +38,7 @@ claude mcp add regex-tester -- uvx regex-tester-mcp
   "mcpServers": {
     "regex-tester": {
       "command": "uvx",
-      "args": ["regex-tester-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/regex-tester-mcp", "regex-tester-mcp"]
     }
   }
 }
@@ -53,7 +51,7 @@ opencode (`opencode.json`):
   "mcp": {
     "regex-tester": {
       "type": "local",
-      "command": ["uvx", "regex-tester-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/regex-tester-mcp", "regex-tester-mcp"],
       "enabled": true
     }
   }

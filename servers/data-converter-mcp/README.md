@@ -1,7 +1,5 @@
 # 📊 Data Converter MCP
 
-[![PyPI](https://img.shields.io/pypi/v/data-converter-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/data-converter-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/data-converter-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -25,14 +23,14 @@ Source formats: `json`, `csv`, `yaml`, `xml`. Target formats: those four plus `m
 ## 🚀 Install
 
 ```bash
-uvx data-converter-mcp          # recommended, no installation
-pip install data-converter-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/data-converter-mcp data-converter-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/data-converter-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add data-converter -- uvx data-converter-mcp
+claude mcp add data-converter -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/data-converter-mcp data-converter-mcp
 ```
 
 ```json
@@ -40,7 +38,7 @@ claude mcp add data-converter -- uvx data-converter-mcp
   "mcpServers": {
     "data-converter": {
       "command": "uvx",
-      "args": ["data-converter-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/data-converter-mcp", "data-converter-mcp"]
     }
   }
 }
@@ -53,7 +51,7 @@ opencode (`opencode.json`):
   "mcp": {
     "data-converter": {
       "type": "local",
-      "command": ["uvx", "data-converter-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/data-converter-mcp", "data-converter-mcp"],
       "enabled": true
     }
   }

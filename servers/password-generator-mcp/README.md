@@ -1,7 +1,5 @@
 # 🔑 Password Generator MCP
 
-[![PyPI](https://img.shields.io/pypi/v/password-generator-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/password-generator-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/password-generator-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -27,14 +25,14 @@ alphanumeric body.
 ## 🚀 Install
 
 ```bash
-uvx password-generator-mcp          # recommended, no installation
-pip install password-generator-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/password-generator-mcp password-generator-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/password-generator-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add password-generator -- uvx password-generator-mcp
+claude mcp add password-generator -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/password-generator-mcp password-generator-mcp
 ```
 
 ```json
@@ -42,7 +40,7 @@ claude mcp add password-generator -- uvx password-generator-mcp
   "mcpServers": {
     "password-generator": {
       "command": "uvx",
-      "args": ["password-generator-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/password-generator-mcp", "password-generator-mcp"]
     }
   }
 }
@@ -55,7 +53,7 @@ opencode (`opencode.json`):
   "mcp": {
     "password-generator": {
       "type": "local",
-      "command": ["uvx", "password-generator-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/password-generator-mcp", "password-generator-mcp"],
       "enabled": true
     }
   }

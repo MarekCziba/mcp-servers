@@ -1,7 +1,5 @@
 # 🎬 YouTube Transcript MCP
 
-[![PyPI](https://img.shields.io/pypi/v/youtube-transcript-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/youtube-transcript-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/youtube-transcript-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -24,14 +22,14 @@ or a bare 11-character video ID. Failures never raise — the tools return a
 ## 🚀 Install
 
 ```bash
-uvx youtube-transcript-mcp          # recommended, no installation
-pip install youtube-transcript-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/youtube-transcript-mcp youtube-transcript-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/youtube-transcript-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add youtube-transcript -- uvx youtube-transcript-mcp
+claude mcp add youtube-transcript -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/youtube-transcript-mcp youtube-transcript-mcp
 ```
 
 Cursor, Windsurf, or any JSON-config client:
@@ -41,7 +39,7 @@ Cursor, Windsurf, or any JSON-config client:
   "mcpServers": {
     "youtube-transcript": {
       "command": "uvx",
-      "args": ["youtube-transcript-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/youtube-transcript-mcp", "youtube-transcript-mcp"]
     }
   }
 }
@@ -54,7 +52,7 @@ opencode (`opencode.json`):
   "mcp": {
     "youtube-transcript": {
       "type": "local",
-      "command": ["uvx", "youtube-transcript-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/youtube-transcript-mcp", "youtube-transcript-mcp"],
       "enabled": true
     }
   }

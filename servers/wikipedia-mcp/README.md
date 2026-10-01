@@ -1,7 +1,5 @@
 # 🌐 Wikipedia MCP
 
-[![PyPI](https://img.shields.io/pypi/v/wikipedia-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/wikipedia-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/wikipedia-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -27,14 +25,14 @@ official REST API (`/api/rest_v1/page/summary`).
 ## 🚀 Install
 
 ```bash
-uvx wikipedia-mcp          # recommended, no installation
-pip install wikipedia-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/wikipedia-mcp wikipedia-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/wikipedia-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add wikipedia -- uvx wikipedia-mcp
+claude mcp add wikipedia -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/wikipedia-mcp wikipedia-mcp
 ```
 
 ```json
@@ -42,7 +40,7 @@ claude mcp add wikipedia -- uvx wikipedia-mcp
   "mcpServers": {
     "wikipedia": {
       "command": "uvx",
-      "args": ["wikipedia-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/wikipedia-mcp", "wikipedia-mcp"]
     }
   }
 }
@@ -55,7 +53,7 @@ opencode (`opencode.json`):
   "mcp": {
     "wikipedia": {
       "type": "local",
-      "command": ["uvx", "wikipedia-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/wikipedia-mcp", "wikipedia-mcp"],
       "enabled": true
     }
   }

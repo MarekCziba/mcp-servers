@@ -1,7 +1,5 @@
 # 🔡 Case Converter MCP
 
-[![PyPI](https://img.shields.io/pypi/v/case-converter-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/case-converter-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/case-converter-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -28,14 +26,14 @@ so `HTTPServer` → `http_server`, `XMLHttpRequest` → `xml_http_request` and
 ## 🚀 Install
 
 ```bash
-uvx case-converter-mcp          # recommended, no installation
-pip install case-converter-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/case-converter-mcp case-converter-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/case-converter-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add case-converter -- uvx case-converter-mcp
+claude mcp add case-converter -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/case-converter-mcp case-converter-mcp
 ```
 
 ```json
@@ -43,7 +41,7 @@ claude mcp add case-converter -- uvx case-converter-mcp
   "mcpServers": {
     "case-converter": {
       "command": "uvx",
-      "args": ["case-converter-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/case-converter-mcp", "case-converter-mcp"]
     }
   }
 }
@@ -56,7 +54,7 @@ opencode (`opencode.json`):
   "mcp": {
     "case-converter": {
       "type": "local",
-      "command": ["uvx", "case-converter-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/case-converter-mcp", "case-converter-mcp"],
       "enabled": true
     }
   }

@@ -20,8 +20,7 @@ private repositories.
 ## Quick start
 
 ```bash
-uvx --from git+https://github.com/MarekCziba/mcp-servers \
-  --directory servers/github-mcp github-mcp
+uvx --from "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/github-mcp" github-mcp
 ```
 
 ### Claude Desktop / Claude Code config
@@ -30,7 +29,12 @@ uvx --from git+https://github.com/MarekCziba/mcp-servers \
 {
   "mcpServers": {
     "github": {
-      "command": "github-mcp",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/github-mcp",
+        "github-mcp"
+      ],
       "env": { "GITHUB_TOKEN": "ghp_optional_for_private_repos" }
     }
   }

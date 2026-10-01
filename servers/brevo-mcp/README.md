@@ -1,7 +1,5 @@
 # ✉️ Brevo MCP
 
-[![PyPI](https://img.shields.io/pypi/v/brevo-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/brevo-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/brevo-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -23,14 +21,14 @@ Each item of `recipients` is `{"email": str, "name": str, "subject": str, "html"
 ## 🚀 Install
 
 ```bash
-uvx brevo-mcp          # recommended, no installation
-pip install brevo-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/brevo-mcp brevo-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/brevo-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add brevo -- uvx brevo-mcp
+claude mcp add brevo -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/brevo-mcp brevo-mcp
 ```
 
 Cursor, Windsurf, or any JSON-config client:
@@ -40,7 +38,7 @@ Cursor, Windsurf, or any JSON-config client:
   "mcpServers": {
     "brevo": {
       "command": "uvx",
-      "args": ["brevo-mcp"],
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/brevo-mcp", "brevo-mcp"],
       "env": {
         "BREVO_API_KEY": "your-api-key"
       }
@@ -56,7 +54,7 @@ opencode (`opencode.json`):
   "mcp": {
     "brevo": {
       "type": "local",
-      "command": ["uvx", "brevo-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/brevo-mcp", "brevo-mcp"],
       "enabled": true,
       "environment": {
         "BREVO_API_KEY": "your-api-key"

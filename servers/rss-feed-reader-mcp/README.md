@@ -1,7 +1,5 @@
 # 📰 RSS Feed Reader MCP
 
-[![PyPI](https://img.shields.io/pypi/v/rss-feed-reader-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/rss-feed-reader-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/rss-feed-reader-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -23,14 +21,14 @@ Every entry: `title`, `link`, `published`, `summary` (first 1000 characters), `a
 ## 🚀 Install
 
 ```bash
-uvx rss-feed-reader-mcp          # recommended, no installation
-pip install rss-feed-reader-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp rss-feed-reader-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add rss-feed-reader -- uvx rss-feed-reader-mcp
+claude mcp add rss-feed-reader -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp rss-feed-reader-mcp
 ```
 
 Cursor, Windsurf, or any JSON-config client:
@@ -40,7 +38,7 @@ Cursor, Windsurf, or any JSON-config client:
   "mcpServers": {
     "rss-feed-reader": {
       "command": "uvx",
-      "args": ["rss-feed-reader-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp", "rss-feed-reader-mcp"]
     }
   }
 }
@@ -53,7 +51,7 @@ opencode (`opencode.json`):
   "mcp": {
     "rss-feed-reader": {
       "type": "local",
-      "command": ["uvx", "rss-feed-reader-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/rss-feed-reader-mcp", "rss-feed-reader-mcp"],
       "enabled": true
     }
   }

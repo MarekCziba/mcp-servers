@@ -1,7 +1,5 @@
 # 🕒 Datetime Utility MCP
 
-[![PyPI](https://img.shields.io/pypi/v/datetime-utility-mcp?logo=pypi&logoColor=fff)](https://pypi.org/project/datetime-utility-mcp/)
-[![Python](https://img.shields.io/pypi/pyversions/datetime-utility-mcp?logo=python&logoColor=fff)](https://www.python.org/)
 [![CI](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml/badge.svg)](https://github.com/MarekCziba/mcp-servers/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/MarekCziba/mcp-servers/blob/main/LICENSE)
 
@@ -25,14 +23,14 @@ Timezones use the IANA names from `zoneinfo` (`UTC`, `US/Eastern`, `Asia/Tokyo`,
 ## 🚀 Install
 
 ```bash
-uvx datetime-utility-mcp          # recommended, no installation
-pip install datetime-utility-mcp  # or with pip
+uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/datetime-utility-mcp datetime-utility-mcp          # recommended, no installation
+pip install "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/datetime-utility-mcp"  # or with pip
 ```
 
 ## 🔌 Connect your MCP client
 
 ```bash
-claude mcp add datetime-utility -- uvx datetime-utility-mcp
+claude mcp add datetime-utility -- uvx --from git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/datetime-utility-mcp datetime-utility-mcp
 ```
 
 ```json
@@ -40,7 +38,7 @@ claude mcp add datetime-utility -- uvx datetime-utility-mcp
   "mcpServers": {
     "datetime-utility": {
       "command": "uvx",
-      "args": ["datetime-utility-mcp"]
+      "args": ["--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/datetime-utility-mcp", "datetime-utility-mcp"]
     }
   }
 }
@@ -53,7 +51,7 @@ opencode (`opencode.json`):
   "mcp": {
     "datetime-utility": {
       "type": "local",
-      "command": ["uvx", "datetime-utility-mcp"],
+      "command": ["uvx", "--from", "git+https://github.com/MarekCziba/mcp-servers#subdirectory=servers/datetime-utility-mcp", "datetime-utility-mcp"],
       "enabled": true
     }
   }
