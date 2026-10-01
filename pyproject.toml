@@ -1,7 +1,7 @@
 [project]
 name = "mcp-servers-workspace"
 version = "0.1.0"
-description = "Monorepo workspace for 17 free, uvx-installable MCP servers."
+description = "Monorepo workspace for 19 free, uvx-installable MCP servers."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -39,7 +39,9 @@ pythonpath = [
     "servers/color-converter-mcp",
     "servers/data-converter-mcp",
     "servers/datetime-utility-mcp",
+    "servers/github-mcp",
     "servers/hash-checksum-mcp",
+    "servers/job-tracker-mcp",
     "servers/password-generator-mcp",
     "servers/regex-tester-mcp",
     "servers/rss-feed-reader-mcp",

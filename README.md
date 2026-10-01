@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![MCP](https://img.shields.io/badge/MCP-2.x-2b6cb0)](https://modelcontextprotocol.io)
 
-> **17 free, open-source [MCP](https://modelcontextprotocol.io) servers. No API key, no account, no pay-per-event.**
+> **19 free, open-source [MCP](https://modelcontextprotocol.io) servers. No API key, no account, no pay-per-event.**
 
 Every server speaks the Model Context Protocol over stdio, runs locally next to your
 agent, and does one job well. Install any of them in a single command with
@@ -21,6 +21,8 @@ uvx website-to-markdown-mcp
 |--------|--------------|:-----:|
 | [`website-to-markdown-mcp`](servers/website-to-markdown-mcp) | Turn any web page into clean, LLM-ready Markdown | 3 |
 | [`wikipedia-mcp`](servers/wikipedia-mcp) | Search Wikipedia — summaries, plain text, outgoing links | 4 |
+| [`github-mcp`](servers/github-mcp) | Search GitHub — repos, issues, files, READMEs (zero API key) | 5 |
+| [`job-tracker-mcp`](servers/job-tracker-mcp) | Local job application tracker — stages, stats, follow-ups, CSV | 8 |
 | [`rss-feed-reader-mcp`](servers/rss-feed-reader-mcp) | Fetch, parse and search RSS/Atom feeds | 3 |
 | [`seo-analyzer-mcp`](servers/seo-analyzer-mcp) | Audit pages for titles, meta, headings, images, links | 3 |
 | [`youtube-transcript-mcp`](servers/youtube-transcript-mcp) | Transcripts, video info and languages for YouTube | 3 |
@@ -39,7 +41,7 @@ uvx website-to-markdown-mcp
 
 \* `brevo-mcp` is the only server that needs a key — set `BREVO_API_KEY`. Everything else works out of the box.
 
-**72 tools total, MIT licensed, no telemetry.**
+**85 tools total, MIT licensed, no telemetry.**
 
 ## Quick start
 
@@ -87,7 +89,7 @@ mcp-servers/
 ├── servers/
 │   ├── website-to-markdown-mcp/     # each server: package/, tests/, README.md, pyproject.toml
 │   ├── rss-feed-reader-mcp/
-│   └── …                            # 17 total
+│   └── …                            # 19 total
 ├── .github/workflows/ci.yml         # ruff + pytest + build, per-server matrix
 ├── pyproject.toml                   # workspace config (lint, pytest, shared dev deps)
 └── README.md
@@ -108,8 +110,8 @@ uv build servers/hash-checksum-mcp          # packaging check
 ```
 
 Tests assert against **real known vectors and live URLs** — published NIST/RFC digests,
-real RSS feeds, pages that actually exist — not against whatever the code happens to
-return.
+real RSS feeds, real GitHub API responses, pages that actually exist — not against
+whatever the code happens to return.
 
 ## License
 

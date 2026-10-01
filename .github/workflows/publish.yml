@@ -40,11 +40,9 @@ jobs:
           - seo-analyzer-mcp
           - youtube-transcript-mcp
           - brevo-mcp
-          - crypto-prices-mcp
-          - github-repo-mcp
           - wikipedia-mcp
-          - stack-overflow-mcp
-          - arxiv-mcp
+          - github-mcp
+          - job-tracker-mcp
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
