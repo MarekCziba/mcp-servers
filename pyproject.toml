@@ -1,7 +1,7 @@
 [project]
 name = "mcp-servers-workspace"
 version = "0.1.0"
-description = "Monorepo workspace for 16 free, uvx-installable MCP servers."
+description = "Monorepo workspace for 17 free, uvx-installable MCP servers."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
@@ -48,6 +48,7 @@ pythonpath = [
     "servers/unit-converter-mcp",
     "servers/uuid-generator-mcp",
     "servers/website-to-markdown-mcp/src",
+    "servers/wikipedia-mcp",
     "servers/youtube-transcript-mcp",
 ]
 
