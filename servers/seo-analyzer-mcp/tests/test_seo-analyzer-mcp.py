@@ -5,7 +5,7 @@ import pytest
 from seo_analyzer_mcp.main import analyze_multiple, analyze_page, analyze_seo, extract_links
 
 EXAMPLE = "https://example.com"
-DOCS = "https://docs.python.org/3/tutorial/"
+DOCS = "https://developer.mozilla.org/en-US/docs/Web/HTML"
 BOGUS = "https://seo-analyzer-test-invalid-domain-987654.invalid/"
 
 
@@ -27,22 +27,23 @@ async def test_analyze_seo_example_com_live() -> None:
     assert result["links"]["external"] >= 1
 
 
-async def test_analyze_seo_python_docs_live() -> None:
+async def test_analyze_seo_mdn_live() -> None:
     result = await analyze_seo(DOCS)
-    assert result["title"].startswith("The Python Tutorial")
+    assert result["title"] == "HTML: HyperText Markup Language | MDN"
     assert result["title_ok"] is True
-    assert result["meta_description"].startswith("Python is an easy to learn")
+    assert result["meta_description"].startswith(
+        "HTML (HyperText Markup Language) is the most basic"
+    )
     assert result["meta_description_length"] > 160
     assert result["meta_description_ok"] is False
     assert result["has_h1"] is True
-    assert len(result["headings"]["h1"]) == 1
+    assert result["headings"]["h1"] == ["HTML: HyperText Markup Language"]
     assert result["headings"]["h3"]
-    assert result["images"]["total"] >= 1
     assert result["images"]["alt_ok"] is True
-    assert result["canonical"].startswith("https://docs.python.org/3/tutorial/")
-    assert "og:title" in result["og_tags"]
+    assert result["canonical"] == DOCS
     assert result["structured_data"] >= 0
     assert result["word_count"] > 500
+    assert result["links"]["internal"] >= 1
 
 
 async def test_extract_links_live() -> None:
@@ -66,7 +67,7 @@ async def test_analyze_multiple_error_isolation_live() -> None:
     assert results[0]["title"] == "Example Domain"
     assert results[1]["error"]
     assert "error" not in results[2]
-    assert results[2]["title"].startswith("The Python Tutorial")
+    assert results[2]["title"] == "HTML: HyperText Markup Language | MDN"
 
 
 async def test_invalid_url_raises_http_error() -> None:

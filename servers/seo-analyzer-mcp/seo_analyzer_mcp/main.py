@@ -6,7 +6,10 @@ from mcp.server.mcpserver import MCPServer
 
 MCP_SERVER_NAME = "seo-analyzer-mcp"
 mcp = MCPServer(MCP_SERVER_NAME)
-USER_AGENT = "Mozilla/5.0 (compatible; MarekCziba-MCP/1.0)"
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
 
 
 async def fetch_html(url: str) -> str:
